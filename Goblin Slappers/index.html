@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Goblin Slappers</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="title">
+      <div class="container">
+        <h1>Goblin Slappers</h1>
+      </div>
+    </div>
+    <div class="textbox">
+      <div class="container">
+        <h2 id="battlelog">SLAP TO START!</h2>
+      </div>
+    </div>
+    <div class="battle">
+      <div id="container">
+        <button id="button" onclick="start()">SLAP</button>
+        <button id="button1" onclick="slapMove()" style="display: none">
+          SLAP
+        </button>
+        <button id="button2" onclick="dodgeMove()" style="display: none">
+          DODGE
+        </button>
+        <button id="button3" onclick="blockMove()" style="display: none">
+          BLOCK
+        </button>
+        <br />
+        <br />
+      </div>
+    </div>
+    <div class="heroPic">
+      <img
+        id="hero"
+        style="display: none"
+        src="https://i.mmo.cm/is/image/mmoimg/thumbnew/dark-knight-helmet--an-107876-3.jpg"
+      />
+      <h2 id="heroname"></h2>
+
+      <h2 id="herohealth"></h2>
+      <br />
+      <h2 id="vs" style="display: none">VS</h2>
+      <br />
+      <h2 id="enemyhealth"></h2>
+      <h2 id="gobbler"></h2>
+      <img
+        id="gob"
+        style="display: none"
+        src="https://cdn.shopify.com/s/files/1/0897/6584/products/theringrott_productshot.jpg?v=1503360396"
+      />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
