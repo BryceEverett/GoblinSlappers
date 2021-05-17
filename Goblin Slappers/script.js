@@ -10,6 +10,9 @@ let myHero;
 let myEnemies;
 let heroPower;
 let trueHeroPower;
+let enemyPower;
+let trueEnemyPower;
+let murderedGobs = 0;
 
 //#endregion
 
@@ -119,6 +122,7 @@ function enemySelect() {
     dodge = 1;
     block = 1;
     gobHealth = 25;
+    enemyPower = 2;
   } else if (myEnemies == 1) {
     enemyName = "Armored Goblin";
     dodge = 3;
@@ -129,16 +133,19 @@ function enemySelect() {
     dodge = 5;
     block = 5;
     gobHealth = 50;
+    enemyPower = 3;
   } else if (myEnemies == 3) {
     enemyName = "Armored Hobgoblin";
     dodge = 4;
     block = 8;
     gobHealth = 60;
+    enemyPower = 4;
   } else if (myEnemies == 4) {
     enemyName = "Hob Boss";
     dodge = 10;
     block = 10;
     gobHealth = 100;
+    enemyPower = 5;
   } else {
     console.log("something is broke");
   }
@@ -159,6 +166,7 @@ function start() {
   document.getElementById("hero").style.display = "";
   document.getElementById("gob").style.display = "";
   document.getElementById("vs").style.display = "";
+  document.getElementById("slapcounter").style.display = "";
   heroSelect();
   enemySelect();
   document.getElementById("heroname").innerHTML = heroName;
@@ -174,29 +182,44 @@ function start() {
 function slapMove() {
   trueHeroPower = Math.floor((Math.random()*10)+1 * heroPower);
   document.getElementById('battlelog').innerHTML = `You slap the enemy for ${trueHeroPower} damage`;
-  gobHealth = gobHealth - trueHeroPower;
+  gobHealth -=trueHeroPower;
   document.getElementById('enemyhealth').innerHTML = "Health: " + gobHealth;
   console.log(trueHeroPower);
   if (gobHealth <= 0) {
     enemySelect();
     document.getElementById("gobbler").innerHTML = enemyName;
     document.getElementById("enemyhealth").innerHTML = "Health: " + gobHealth;
-    console.log('The goblin died')
+    console.log('The goblin died');
+    murderedGobs++;
+    console.log(murderedGobs);
+    document.getElementById("slapcounter").innerHTML = `Goblins Brutally Slapped: ${murderedGobs}`;
   }else{
-    console.log('Goblin is alive!')
+    console.log('Goblin is alive!');
   }
+  goblinMove()
 }
 
-// function dodgeMove(){
-//   document.getElementById("battlelog").innerHTML =
-//     "You do a dodge roll";
-// }
+ function dodgeMove(){
+   document.getElementById("battlelog").innerHTML =
+     "You do a dodge roll, but we slap around here!";
+    goblinMove()
+ }
 
-// function blockMove(){
-//   document.getElementById("battlelog").innerHTML =
-//     "You stand your ground and block";
-// }
+ function blockMove(){
+   document.getElementById("battlelog").innerHTML =
+     "You stand your ground and block, but we slap around here!";
+    goblinMove()
+ }
 
+
+ function goblinMove(){
+  trueEnemyPower = Math.floor((Math.random()*10)+1 * enemyPower);
+  health -= trueEnemyPower;
+  document.getElementById("herohealth").innerHTML = "Health: " + health;
+  if(health <= 0){
+    alert('You have been slapped to doom by the goblin menace!')
+  }
+}
 
 
 //#endregion
